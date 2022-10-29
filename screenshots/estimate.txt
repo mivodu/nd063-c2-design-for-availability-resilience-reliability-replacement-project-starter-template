@@ -1,0 +1,6 @@
+The database is a multi AZ database and replicated into a different region.
+
+Minimum RTO for a single AZ outage: In case of single AZ outage, the database is automatically failing over to a different AZ in the same region. That takes according to AWS typically 60–120 seconds. So RTO in that case is 1-2 minutes
+Minimum RTO for a single region outage: In case of a complete region outage, the replica database needs to be promoted. This will be done manually. RTO is around 30 - 45 minutes (On call has to be informed and logged into the system (15 minutes); identifies root cause and promote the replica DB (10 minutes); it takes some time until promoted db is available (15 minutes)).
+Minimum RPO for a single AZ outage: As the data is replicated accross regions and AZ, the worst case is a data corruption that is as well replicated accross AZ and regions. So I am totally dependend on my last backup. If backups are done every 6 hours, then my RPO is 6 hours.
+Minimum RPO for a single region outage: In case of data corruption there is no difference between AZ or regionoutage. I need to restore from last backup, so RPO is as well 6 hours.

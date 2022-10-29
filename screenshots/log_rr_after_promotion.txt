@@ -1,0 +1,31 @@
+[root@ip-10-2-11-106 ec2-user]# mysql -u admin -p -h database-secondary.cjbskwufkfan.us-east-2.rds.amazonaws.com
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.28 Source distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MySQL [(none)]> connect udacity
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Connection id:    11
+Current database: udacity
+
+MySQL [udacity]> insert into test (text) value ('anothertext');
+Query OK, 1 row affected (0.01 sec)
+
+MySQL [udacity]> select * from test;
++-------------+
+| text        |
++-------------+
+| exampletext |
+| anothertext |
++-------------+
+2 rows in set (0.00 sec)
+
+MySQL [udacity]>
+
